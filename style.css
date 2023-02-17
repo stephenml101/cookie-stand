@@ -1,7 +1,144 @@
-body {
-  background-color: rgb(224, 188, 195);
+/* *****Global***** */
+body{
+  background-color: aliceblue;
 }
 
+
+
+/* ****index**** */
+
+
+  body#index{
+    background-image: url(img/nature.jpg);
+    background-size: 100%;
+  }
+  header{
+    background-image: url(img/white.jpg);
+    background-repeat: no-repeat;
+    border-style: double;
+    border-color: black;
+    border-width: 10px;
+    margin: 2px;
+    padding: 3px;
+    text-align: center;
+  }
+  a{
+    position: relative;
+    left: 125px;
+  }
+
+  #fish{
+    transform: rotate(30deg);
+    width: 80px;
+    position: relative;
+    right: 250px;
+    bottom: 50px;
+  }
+  #cookie{
+    transform: rotate(40deg);
+    width: 80px;
+    position: absolute;
+    left: 10%;
+    
+  }
+  #chinook{
+    transform: rotate(-20deg);
+    width: 80px;
+    position: relative;
+    left: 300px;
+    bottom: 50px;
+  }
+  #cutter{
+    transform: rotate(-20deg);
+    width: 80px;
+    position: relative;
+    bottom: 40px;
+    left: 600px;
+  }
+
+
+
 h1{
+  text-align: center;
+}
+
+#family{
+  width: 30%;
+  position: relative;
+  top: 100px;
+  left:200px
+}
+
+#family-title{
+  background-color: aliceblue;
+  width: 10.5%;
+  position: relative;
+  left: 380px;
+  top: 80px;
+
+}
+
+#nature-made{
+background-color: aliceblue;
+position: absolute;
+left: 1050px;
+top: 300px;
+
+}
+
+#shirt{
+  width: 10%;
+  position: absolute;
+  bottom: 350px;
+  right: 575px;
+}
+
+
+
+
+.store{
+  color: white;
+  background-color: grey;
+  width: 20%;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+ }
+
+#salmon{
+  width:20%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+#sign{
+  width: 25%;
+  position:relative;
+  left: 370px;
+  top: 100px;
+}
+
+
+/* ***Sales*** */
+
+table {
+  width: 80%;
+  border: 1px dotted;
+  border-width: 5px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+table th{
+  border: 1px solid;
+}
+
+table td{
+  border: 1px solid;
+}
+
+h2#sales{
   text-align: center;
 }

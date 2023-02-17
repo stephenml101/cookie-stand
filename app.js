@@ -7,6 +7,13 @@ let HTMLlocation = document.getElementById('sales-table');
 // ********** GLOBALS **************
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
+let cityArray = [];
+
+let storeTotals = [];
+
+// FORM TODO - STEP 1 : GRAB ELEMENT TO LISTEN TO!!!
+let myForm = document.getElementById('my-form');
+
 // ********** HELPER FUNCTIONS/UTILITES *********
 
 function randomCustomers(min, max) {
@@ -14,7 +21,7 @@ function randomCustomers(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function header(){
+function header() {
   // tr
   let trElem = document.createElement('tr');
   HTMLlocation.appendChild(trElem);
@@ -33,6 +40,36 @@ function header(){
   trElem.appendChild(tdElem);
 };
 
+// *******FOOTER**********
+
+function footer() {
+  let foot = document.createElement('tfoot');
+  let row = document.createElement('tr');
+  foot.appendChild(row);
+  let totals = [];
+  let totalofTotals = 0;
+  let label = document.createElement('td');
+  label.textContent = 'Totals';
+  row.appendChild(label);
+
+  for (let i = 0; i < hours.length; i++) {
+    let total = 0;
+    for (let j = 0; j < cityArray.length; j++) {
+      total += cityArray[j].cookieSoldPerHour[i];
+      totalofTotals += cityArray[j].cookieSoldPerHour[i];
+    }
+    totals.push(total);
+  }
+  for (let k = 0; k < hours.length; k++){
+    let ted = document.createElement('td');
+    ted.textContent = totals[k];
+    row.appendChild(ted);
+  }
+  let totalTd = document.createElement('td');
+  totalTd.textContent = totalofTotals;
+  row.appendChild(totalTd);
+  HTMLlocation.appendChild(foot);
+}
 
 // ********** CONSTRUCTOR FUNCTION *********
 
@@ -44,6 +81,7 @@ function Store(name, minCust, maxCust, avgCookieBought) {
   this.cookieSoldPerHour = [];
   this.cookiesCustomerPerHour = [];
   this.dailySoldTotal = 0;
+  cityArray.push(this)
 }
 
 // ******** PROTOTYPE METHODS **********
@@ -87,6 +125,27 @@ Store.prototype.render = function () {
   trElem.appendChild(tdElem);
 };
 
+// ***** STEP 3: FORM HANDLER ********
+
+function handleFormSubmit(event) {
+  event.preventDefault();
+  console.log(event);
+
+  let location = event.target.location.value;
+  console.log(location);
+  let minCustomer = +event.target.minCustomer.value;
+
+  let maxCustomer = +event.target.maxCustomer.value;
+
+  let averageCookieBought = +event.target.averageCookieBought.value;
+
+  let newStore = new Store(location, minCustomer, maxCustomer, averageCookieBought);
+
+
+  newStore.render();
+
+}
+
 // ********** EXECUTABLE CODE **********
 header()
 let seattle = new Store('Seattle', 23, 65, 6.3);
@@ -100,8 +159,13 @@ tokyo.render()
 dubai.render()
 paris.render()
 lima.render()
+footer()
 
-      // ********** OBJECT LITERAL **********
+// FORM STEP 2 ATTACH MY EVENT LISTENER
+
+myForm.addEventListener('submit', handleFormSubmit);
+
+      // ********** OBJECT LITERAL ********** PREVIOUS CODE
 
       // let seattle = {
       //   name: 'Seattle',
