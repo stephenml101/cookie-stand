@@ -71,6 +71,8 @@ function footer() {
   HTMLlocation.appendChild(foot);
 }
 
+
+
 // ********** CONSTRUCTOR FUNCTION *********
 
 function Store(name, minCust, maxCust, avgCookieBought) {
